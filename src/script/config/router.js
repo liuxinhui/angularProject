@@ -5,6 +5,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     url: '/main',
     templateUrl: 'view/main.html',
     controller: 'mainCtrl'
+  }).state('position',{
+  	url:'/position/:id',
+  	templateUrl:'view/position.html',
+  	controller:'positionCtrl'
   });
   $urlRouterProvider.otherwise('main');
 }])
