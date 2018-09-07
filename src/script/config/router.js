@@ -13,6 +13,10 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     url:'/company/:id',
     templateUrl:'view/company.html',
     controller:'companyCtrl'
+  }).state('search',{
+    url:'/search/:id',
+    templateUrl:'view/search.html',
+    controller:'searchCtrl'
   });
   $urlRouterProvider.otherwise('main');
 }])

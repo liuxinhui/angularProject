@@ -12,7 +12,7 @@ app.directive('appHeadBar', [function () {
 			scope.back=function(){
 				//浏览器返回的效果
 				window.history.back();
-			}
+			};
 		}
 	};
 }])

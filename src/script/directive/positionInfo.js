@@ -7,6 +7,8 @@ app.directive('appPositionInfo', [function () {
 		templateUrl:'view/template/positionInfo.html',
 		scope:{
 			isActive: '=',
+			isLogin:'=',
+			pos:'=',
 		},
 		link:function($scope){
 			$scope.imagePath = $scope.isActive?'image/star-active.png':'image/star.png';

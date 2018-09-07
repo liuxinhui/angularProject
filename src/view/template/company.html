@@ -1,5 +1,5 @@
 <div class="bg-w company-info p-r" ui-sref="company({id:1})">
-	<img class="p-a" src="image/company-1.png" alt="" />
-	<p>大唐网络</p>
-	<p>移动互联网/重创空间/20-150m</p>
+	<img class="p-a" ng-src="{{com.imageUrl}}" alt="" />
+	<p ng-bind="com.name">大唐网络</p>
+	<p ng-bind="com.industry+'/'+com.state+'/'+com.people">移动互联网/重创空间/20-150m</p>
 </div>

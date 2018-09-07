@@ -5,6 +5,8 @@ app.directive('appCompany', [function () {
 		restrict: 'A',
 		replace:true,
 		templateUrl:'view/template/company.html',
-		
+		scope:{
+			com:'=',
+		},
 	};
 }])
