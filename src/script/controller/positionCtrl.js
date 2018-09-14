@@ -2,8 +2,8 @@
 
 app.controller('positionCtrl', ['$http','$scope','$state','$q','cache',function ($http,$scope,$state,$q,cache) {
 	var positionCon = {} || positionCon;
-	positionCon.isLogin=false;
-	//cache.put('mm','123')
+	$scope.isLogin= !!cache.get('name');
+	$scope.message = $scope.isLogin?'投个简历':'去登录';
 	function getPosition(){
 		var def = $q.defer();
 		$http.get('/data/position.json',{
@@ -13,6 +13,9 @@ app.controller('positionCtrl', ['$http','$scope','$state','$q','cache',function 
 			}
 		}).then(function(res){
 			positionCon.posCon=res.data;
+			if(positionCon.posCon.posted) {
+		        $scope.message = '已投递';
+		     }
 			def.resolve(res.data)
 		});
 		return def.promise;
@@ -28,6 +31,26 @@ app.controller('positionCtrl', ['$http','$scope','$state','$q','cache',function 
 		getCompany(obj.companyId)
 	})
 	
+	$scope.go=function(){
+		console.log('11111')
+		console.log($state.params.id)
+		if($scope.message !=='已投递'){
+			if($scope.isLogin){
+				$http.post('data/handle.json',{
+					id:$state.params.id
+				}).then(function(res){
+					console.log('res')
+					console.log(res)
+					$scope.message = '已投递'
+				})
+			}else{
+				$state.go('login')
+			}
+		}
+		
+
+
+	}
 
 
 	$scope.positionCon = positionCon

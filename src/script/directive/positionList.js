@@ -1,6 +1,6 @@
 'use static';
 
-app.directive('appPositionList', [function () {
+app.directive('appPositionList', ['$http',function ($http) {
 	return {
 		restrict: 'A',
 		replace:true,
@@ -8,6 +8,18 @@ app.directive('appPositionList', [function () {
 		scope:{
 			data:'=',
 			filterObj: '=',
-		}
+			isFavorite: '=',
+		},
+	    link: function($scope) {
+	      $scope.select = function(item) {
+	        $http.post('data/favorite.json', {
+	          id: item.id,
+	          select: !item.select
+	        }).then(function(resp){
+	          item.select = !item.select;
+	          alert('123')
+	        })
+	      };
+	    }
 	};
 }])

@@ -17,6 +17,26 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
     url:'/search/:id',
     templateUrl:'view/search.html',
     controller:'searchCtrl'
+  }).state('login',{
+    url:'/login',
+    templateUrl:'view/login.html',
+    controller:'loginCtrl'
+  }).state('register',{
+    url:'/register',
+    templateUrl:'view/register.html',
+    controller:'registerCtrl'
+  }).state('post',{
+    url:'/post',
+    templateUrl:'view/post.html',
+    controller:'postCtrl'
+  }).state('favorite',{
+    url:'/favorite',
+    templateUrl:'view/favorite.html',
+    controller:'favoriteCtrl'
+  }).state('me',{
+    url:'/me',
+    templateUrl:'view/me.html',
+    controller:'meCtrl'
   });
   $urlRouterProvider.otherwise('main');
 }])
